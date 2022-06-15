@@ -1,5 +1,5 @@
 package com.BikkadIT.PhoneBookApplication.service;
 
-public interface ServiceI {
+public class ContactServiceImpl {
 
 }
