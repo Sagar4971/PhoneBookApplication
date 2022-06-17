@@ -1,8 +1,11 @@
 package com.BikkadIT.PhoneBookApplication.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +31,18 @@ public class ContactController {
 			return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
 		}
 		
+	}
+	
+	@GetMapping(value = "/getAllContact", produces = "Application/json")
+	public ResponseEntity<List<Contact>> getAllContact(){
 		
+		List<Contact> list = contactServiceI.getAllContact();
+		if(list != null) {
+			return new ResponseEntity<List<Contact>> (list,HttpStatus.OK);
+		}else {
+			String msg="Data Not Found";
+		return new ResponseEntity (msg,HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 }
