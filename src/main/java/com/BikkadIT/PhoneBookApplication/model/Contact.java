@@ -15,13 +15,13 @@ public class Contact {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "COTACT_ID")
+	@Column(name = "CONTACT_ID")
 	private Integer contactId;
-	@Column(name = "COTACT_NAME")
+	@Column(name = "CONTACT_NAME")
 	private String contactName;
-	@Column(name = "COTACT_NUMBER")
+	@Column(name = "CONTACT_NUMBER")
 	private Long contactNumber;
-	@Column(name = "COTACT_EMAIL")
+	@Column(name = "CONTACT_EMAIL")
 	private String contactEmail;
 	@Column(name = "ACTIVE_SW")
 	private Character activeSw;
@@ -29,6 +29,7 @@ public class Contact {
 	private LocalDate createdDate;
 	@Column(name = "UPDATED_DATE")
 	private LocalDate updatedDate;
+	
 	public Integer getContactId() {
 		return contactId;
 	}
