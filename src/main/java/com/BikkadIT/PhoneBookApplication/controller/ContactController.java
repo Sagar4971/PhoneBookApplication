@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,6 +55,18 @@ public class ContactController {
 		}else {
 			String s="Record Not Found";
 		return new ResponseEntity (s,HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PutMapping("/updateContact")
+	public ResponseEntity<String> updateContact(Contact contact){
+		
+		boolean contact2 = contactServiceI.updateContact(contact);
+		if(contact2 == true) {
+			return new ResponseEntity<String>("Contact Updated successfully",HttpStatus.ACCEPTED.OK);
+		}else {
+			String msg="Contact Not Updated";
+		return new ResponseEntity<String>(msg,HttpStatus.BAD_REQUEST);
 		}
 	}
 }
