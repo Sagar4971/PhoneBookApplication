@@ -59,12 +59,21 @@ public class ContactServiceImpl implements ContactServiceI{
 	@Override
 	public boolean deleteById(Integer cid) {
 		
-		Optional<Contact> findById = contactRepository.findById(cid);
-		if(findById.isPresent()) {
-			contactRepository.deleteById(cid);
+//		Optional<Contact> findById = contactRepository.findById(cid);
+//		if(findById.isPresent()) {
+//			contactRepository.deleteById(cid);
+//			return true;
+//		}else {
+//		return false;
+//	}
+		
+		Optional<Contact> optional = contactRepository.findById(cid);
+		if(optional.isPresent()) {
+			Contact contact = optional.get();
+			contact.setActiveSw('N');
+			contactRepository.save(contact);
 			return true;
-		}else {
+		}
 		return false;
-	}
 }
 }
